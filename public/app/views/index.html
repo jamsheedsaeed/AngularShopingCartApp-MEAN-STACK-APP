@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>User Story</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+  <style>
+    body {
+     padding-top: 60px;
+   }
+
+ </style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-validate/1.2.3/validate.js"></script>
+
+ 
+
+</head>
+
+<body ng-controller="MainController as main">
+  <baseurl href="/" />
+
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar navbar-dark bg-dark" >
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/cartpage">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/users">Users</a>
+        <a class="nav-item nav-link" href="/shop">Shop Now</a>
+        <li class="nav-item">
+          <a href="/checkout" class="nav-item nav-link active " >Cart ( {{ count }} ) <img src="img/bootstrap.svg"></img></a>
+        </li>
+    
+        <li ng-if="main.loggedIn"><a class="nav-item nav-link" href="#">Hello {{ main.user.username }}</a></li>
+        <li ng-if="main.loggedIn"><a class="nav-item nav-link" href="/" ng-click="main.doLogout()">Logout</a></li>
+  
+      
+      </div>
+
+      
+
+    </div>
+    <ul class="navbar-nav">
+    
+     
+    
+  </ul>
+  </nav>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-book" ></span>User Story</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/cartpage">Home</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/shop">Shop Now</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+          <li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
+          <li><a href="/checkout" ><span class="glyphicon glyphicon-shopping-cart"></span> Cart ( {{ count }} )</a></li>
+          <li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li>
+          <li ng-if="main.loggedIn"><a href="/" ng-click="main.doLogout()">Logout</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav> 
+
+  <div class="container">
+    <div ng-view></div>
+  </div><!-- /.container -->
+
+  <!-- Servicies-->
+  <script src="app/services/authService.js"></script>
+  <script src="app/services/userService.js"></script>
+  <script src="app/services/storyService.js"></script>
+  <script src="app/services/cartService.js"></script>
+  <script src="app/services/checkoutService.js"></script>
+
+
+  <!-- Routes -->
+  <script src="app/app.routes.js"></script>
+
+  <!-- Controllers-->
+  <script src="app/controllers/mainCtrl.js"></script>
+  <script src="app/controllers/userCtrl.js"></script>
+  <script src="app/controllers/storyCtrl.js"></script>
+  <script src="app/controllers/cartCtrl.js"></script>
+  <script src="app/controllers/checkoutCtrl.js"></script>
+  <script src="app/controllers/cartdetailCtrl.js"></script>
+  <!-- Directives-->
+  <script src="app/directives/reverse.js"></script>
+
+  <!-- Main APplication -->
+  <script src="app/app.js"></script>
+</body>
+</html>

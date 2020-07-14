@@ -292,8 +292,8 @@
 
 
 <div ng-controller="myCheckout as Cart">
-  <p class="h1 text-center" style="justify-content: center;">Shop Store</p>
-  <br><br><br>
+
+  <br>
   <div class="lst"   flex>
 
     <md-toolbar layout="row" class="md-hue-3">
@@ -312,7 +312,9 @@
             <h3>{{ product.pname }}</h3>
             <h4>{{ product.price }}</h4>
             <p>{{ product.qty }}</p>
-            <md-icon md-svg-icon="communication:email"  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+            <md-icon md-svg-icon="img/plus.svg"  ng-click="AddNewItem(product.pid)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+            <md-icon md-svg-icon="img/minus.svg"  ng-click="clearItem(product.pid)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+
           </div>
         </md-list-item>
         <md-divider ></md-divider>

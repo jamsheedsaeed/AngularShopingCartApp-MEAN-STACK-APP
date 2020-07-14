@@ -194,12 +194,143 @@
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+.listdemoBasicUsage md-divider {
+  margin-top: 10px;
+  margin-bottom: 0; }
+
+
+
+  @media only screen and (min-width: 960px) {
+        /* styles for browsers larger than 960px; */
+        .lst{
+    display: none;
+  }
+  .res {
+    display:block;
+  }
+    }
+
+    @media only screen and (min-width: 1440px) {
+        /* styles for browsers larger than 1440px; */
+        .lst{
+    display: none;
+  }
+  .res {
+    display:block;
+  }
+    }
+    @media only screen and (min-width: 2000px) {
+        /* for sumo sized (mac) screens */
+        .lst{
+    display: none;
+  }
+  .res {
+    display:block;
+  }
+    }
+    @media only screen and (max-device-width: 480px) {
+       /* styles for mobile browsers smaller than 480px; (iPhone) */
+       .lst{
+    display: block;
+  }
+  .res {
+    display: none;
+  }
+    }
+    @media only screen and (device-width: 768px) {
+       /* default iPad screens */
+       .lst{
+    display: block;
+  }
+  .res {
+    display: none;
+  }
+    }
+    /* different techniques for iPad screening */
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+      /* For portrait layouts only */
+      .lst{
+    display: block;
+  }
+  .res {
+    display: none;
+  }
+    }
+
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+      /* For landscape layouts only */
+      .lst{
+    display: block;
+  }
+  .res {
+    display: none;
+  }
+    }
+
+/* @media screen and (max-width: 600px) {
+  .lst{
+    display: block;
+  }
+  .res {
+    display: none;
+  }
+  
+}
+
+@media screen and (min-width: 500px) and (max-width: 1300px) {
+  .lst{
+    display: none;
+  }
+  .res {
+    display:block;
+  }
+  
+} */
+
  </style>
 
 
 <div ng-controller="myCheckout as Cart">
   <p class="h1 text-center" style="justify-content: center;">Shop Store</p>
   <br><br><br>
+  <div class="lst"   flex>
+
+    <md-toolbar layout="row" class="md-hue-3">
+      <div class="md-toolbar-tools">
+        <span>Products</span>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list flex>
+        <md-subheader class="md-no-sticky">Your Cart Items</md-subheader>
+
+        
+        <md-list-item class="md-2-line" ng-repeat="product in products" ng-click="null">
+          <img ng-src="{{product.url}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ product.pname }}</h3>
+            <h4>{{ product.price }}</h4>
+            <p>{{ product.qty }}</p>
+            <md-icon md-svg-icon="communication:email"  ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3" ></md-icon>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+       
+      </md-list>
+
+    </md-content>
+
+
+  </div>
+
+
+
+
+
+
+
+ 
 	<div class="row table-responsive ">
     <br>
    
@@ -207,7 +338,7 @@
   
 
 
-		<table class="table ">
+		<table id="tbl" style="width: 100%;" class="table res">
 
 			<thead class="thead-dark" >
 				<th>image</th>

@@ -1,0 +1,36 @@
+<div  ng-controller="myCartdetails as Cart">
+
+
+
+    <div class="card" style="margin-top: 50px;">
+        <div class="card-header" style="background-color: rgb(65, 57, 57);">
+            <h1 style="text-align:left;float:left;color: white;">Featured</h1> 
+<h2 style="text-align:right;float:right;color: white;">Estimated Shiping Cost: Rs 100</h2> 
+<hr style="clear:both;"/>
+           
+          </div>
+        <div class="row no-gutters">
+            <div class="col-auto">
+                <img src="{{cartDetails[0].url}}" width="200px" height="200px" class="img-fluid" alt="">
+            </div>
+            <div class="col">
+                <div class="card-block px-5">
+                    <h4 class="card-title">{{cartDetails[0].pname}}</h4>
+                    <h5 class="card-text">Price: {{cartDetails[0].price}}</h5>
+
+                    <h1 style="text-align:left;float:left;color: rgb(10, 155, 155);"><img src="img/calender.svg"></img> 30 Days Free Returns</h1> 
+                    <h2 style="text-align:right;float:right;color: black;">3 to 5 Working Days</h2> 
+                    <hr style="clear:both;"/>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="card-footer w-100 text-muted">
+            Shoping Cart
+        </div>
+    </div>
+
+ 
+
+</div>

@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>User Story</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+ 
+
+  <style>
+  
+   md-nav-bar .md-nav-bar {
+  background: #f44336;
+}
+
+
+
+ </style>
+
+<link rel="stylesheet" href="http://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-validate/1.2.3/validate.js"></script>
+
+ 
+ <!-- Angular Material requires Angular.js Libraries -->
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+
+ <!-- Angular Material Library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+
+ <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+ <script src="http://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.js"></script>
+ <link rel="manifest" href="/manifest.json">
+
+</head>
+
+<body ng-controller="MainController as main">
+  <baseurl href="/" />
+
+  <!-- <md-nav-bar md-selected-nav-item="currentNavItem">
+    <md-nav-item md-nav-href="/cartpage" name="page1">
+      Home
+    </md-nav-item>
+    <md-nav-item md-nav-href="/users" name="page3">Users</md-nav-item>
+    <md-nav-item md-nav-href="/shop" name="page2">Shop Now</md-nav-item>
+    <md-nav-item md-nav-href="/checkout" sref-opts="{reload: true, notify: true}" name="page4">
+      <img src="img/bootstrap.svg"> Cart ( {{ count }} ) </img>
+    </md-nav-item>
+
+    <md-nav-item  ng-if="!main.loggedIn" md-nav-href="/login" name="page5">
+      Login 
+    </md-nav-item>
+    <md-nav-item  ng-if="!main.loggedIn" md-nav-href="/signup"  name="page6">
+      Signup 
+    </md-nav-item>
+
+    <md-nav-item  ng-if="main.loggedIn" md-nav-href="#"  name="page7">
+      Hello {{ main.user.username }} 
+    </md-nav-item>
+
+
+    <md-nav-item  ng-if="main.loggedIn"  md-nav-click="main.doLogout()"  name="page8">
+      Logout 
+    </md-nav-item>
+
+   
+
+  </md-nav-bar>
+   -->
+
+    
+   <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Menu" > 
+        <md-tooltip md-direction="right"></md-tooltip>
+        <md-icon md-svg-icon="img/menu.svg"></md-icon>
+       
+      </md-button>
+      <md-divider ></md-divider>
+      <md-button href="/cartpage" class="md-icon-button" aria-label="Home">
+        <md-tooltip md-direction="left"></md-tooltip>
+        <md-icon md-svg-icon="img/home.svg" class="Home-icon"></md-icon>
+      </md-button>
+
+      <md-button href="/users" class="md-icon-button" aria-label="More">
+        <md-icon md-svg-icon="img/user.svg"></md-icon>
+        <md-tooltip md-direction="left"></md-tooltip>
+      </md-button>
+
+      <md-button href="/shop" class="md-icon-button" aria-label="More">
+        <md-icon md-svg-icon="img/shop.svg"></md-icon>
+        <md-tooltip md-direction="left"></md-tooltip>
+      </md-button>
+
+
+      <md-button href="/checkout" style="margin-left: auto;" class="md-icon-button" aria-label="More">
+        <md-icon md-svg-icon="img/shopcart.svg"></md-icon>
+      </md-button>
+      <h4>( {{ count }} )</h4>
+
+
+
+
+
+    </div>
+  </md-toolbar>
+
+
+   <section layout="row" flex>
+
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left"
+                md-disable-backdrop="" md-whiteframe="4">
+
+
+      <md-content layout-margin="">
+       
+        <md-button ng-click="toggleLeft()" class="md-icon-button">
+          <md-icon md-svg-icon="img/close.svg"></md-icon>
+        </md-button><br>
+
+
+        <md-button ng-if="!main.loggedIn" href="/login"  aria-label="More">
+
+          Login
+  
+        </md-button><br>
+  
+        
+   <md-button ng-if="!main.loggedIn" href="/signup"  aria-label="More">
+  
+    Signup
+  
+  </md-button>
+  
+  <md-button ng-if="main.loggedIn" href="#"  aria-label="More">
+  
+   {{ main.user.username }}
+  
+  </md-button><br>
+  <md-button ng-if="main.loggedIn" href="/" ng-click="main.doLogout()"  aria-label="More">
+  
+    Logout
+   
+   </md-button>
+      </md-content>
+
+    </md-sidenav>
+
+   
+
+  </section>
+ 
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-book" ></span>User Story</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/cartpage">Home</a></li>
+          <li><a href="/users">Users</a></li>
+          <li><a href="/shop">Shop Now</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+          <li ng-if="!main.loggedIn"><a href="/signup">Signup</a></li>
+          <li><a href="/checkout" ><span class="glyphicon glyphicon-shopping-cart"></span> Cart ( {{ count }} )</a></li>
+          <li ng-if="main.loggedIn"><a href="#">Hello {{ main.user.username }}</a></li>
+          <li ng-if="main.loggedIn"><a href="/" ng-click="main.doLogout()">Logout</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav> 
+
+  <div class="container">
+    <div ng-view></div>
+  </div><!-- /.container -->
+
+  <!-- Servicies-->
+  <script src="app/services/authService.js"></script>
+  <script src="app/services/userService.js"></script>
+  <script src="app/services/storyService.js"></script>
+  <script src="app/services/cartService.js"></script>
+  <script src="app/services/checkoutService.js"></script>
+  <script src="app/services/addtocartService.js"></script>
+
+  <!-- Routes -->
+  <script src="app/app.routes.js"></script>
+
+  <!-- Controllers-->
+  <script src="app/controllers/mainCtrl.js"></script>
+  <script src="app/controllers/userCtrl.js"></script>
+  <script src="app/controllers/storyCtrl.js"></script>
+  <script src="app/controllers/cartCtrl.js"></script>
+  <script src="app/controllers/checkoutCtrl.js"></script>
+  <script src="app/controllers/cartdetailCtrl.js"></script>
+  <!-- Directives-->
+  <script src="app/directives/reverse.js"></script>
+
+  <!-- Main APplication -->
+  <script src="app/app.js"></script>
+
+  <script>
+    
+  </script>
+
+
+  
+
+  <script>
+var app = angular.module('myApp', ['ngMaterial']);
+app.controller('MyController', function($scope, $mdSidenav) {
+  $scope.openLeftMenu = function() {
+    $mdSidenav('left').toggle();
+  };
+});
+
+  </script>
+</body>
+</html>

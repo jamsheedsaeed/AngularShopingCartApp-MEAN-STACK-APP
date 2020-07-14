@@ -1,0 +1,186 @@
+
+<style>
+
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+/*
+Login template using Angular Material
+@author Shashank Tiwari
+*/
+ 
+body{
+background-color: #e91e63;
+font-family: 'Roboto', sans-serif;
+margin:0px !important;
+}
+ 
+.app-header{
+color: #fff;
+    background-color: #e91e63;
+    text-align: center;
+    padding: 1%;
+-webkit-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+-moz-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+}
+ 
+.login-container{
+width: 100%;
+  height:400px;
+  padding: 0% !important;
+background-color: #fff;
+-webkit-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+-moz-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+}
+ 
+.login-box-header{
+width: auto;
+    height: 20%;
+    background-color: #673ab7;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 3em;
+    padding: 2%;
+    color: #fff;
+}
+ 
+.login-box-body{
+width: auto;
+height:100%;
+padding: 5% 5% 5% 5%;
+color: #d2d2d2;
+}
+ 
+.login-icon{
+margin-top: -2px;
+}
+ 
+.justifier {
+width: 100%;
+padding-bottom: 2%;
+}
+ 
+.login-button{
+width: 100%;
+padding:1.5% !important;
+    background-color: #673ab7;
+    font-size: 1.5em;
+    color: #fff !important;
+}
+</style>
+
+<script>
+	const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+</script>
+
+<div ng-controller="MainController as login">
+	<div ng-controller="userCreateController as user">
+
+	<div class="container" id="container">
+		<br><br>
+			<!-- Writing markup for login starts -->
+			<md-card style="width: 50%;margin-left: auto;margin-right: auto;">
+				<img src="img/login.jpg"  class="md-card-image" alt="image caption" style=" margin-left: auto;margin-right: auto; width:200px;height: 250px;">
+				<md-card-content>
+					<md-input-container class="md-block" flex-gt-xs>
+						<label>User Name</label>
+						<input type="text" placeholder="User Name" ng-model="login.loginData.username"  />
+					  </md-input-container>
+
+				
+						<md-input-container class="md-block" flex-gt-xs>
+						  <label>Password</label>
+						  <input type="password" placeholder="Password" ng-model="login.loginData.password" />
+						</md-input-container>
+						<section layout="row" layout-sm="column" layout-align=" center" layout-wrap>
+
+							<md-button class="md-raised md-warn" ng-click="login.doLogin()">Login</md-button>
+							
+						</section>
+
+					 
+				</md-card-content>
+
+			   </md-card>
+		 
+	
+	</div>
+	
+	<footer>
+		
+	</footer>
+
+</div>
